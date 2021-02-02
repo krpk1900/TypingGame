@@ -73,3 +73,8 @@ body{
   border: 1px solid;
   height: 12px;
 }
+
+.gameOver{
+  font-size: 48px;
+  color: 	orangered;
+}
