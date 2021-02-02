@@ -22,7 +22,7 @@
       </div>
 
       <div class="gaugeWrapper mb-20">
-        <div class="gauge"></div>
+        <div v-bind:style="styleObject" class="gauge"></div>
       </div>
       <div>{{ current_question_counts }}/{{ question_counts }}</div>
     </div>
@@ -38,11 +38,26 @@
           'rails c',
           'exit',
           'bundle exec',
-          'db:migrate'
+          'db:migrate',
+          'test'
         ],
         typeBox: "",
         current_question_counts: 0,
         question_counts: 0
+      },
+      computed: {
+        styleObject: function(){
+          width = 100 / this.question_counts * this.current_question_counts + "%";
+          if(this.current_question_counts == this.question_counts){
+            color = "#03a9f4"
+          }else{
+            color = "orange"
+          }
+          return{
+            'width': width,
+            'background-color': color
+          }
+        }
       },
       methods:{
         gameStart: function(){
