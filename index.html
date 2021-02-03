@@ -16,11 +16,11 @@
     <button v-if="startFlg!=true" class="startButton mb-20" @click="gameStart">START</button>
     <div v-if="startFlg">
       <transition>
-        <span v-show="show" class="blind"> +5秒！</span>
+        <span v-if="show && (current_question_counts != question_counts)" class="blind"> +5秒！</span>
       </transition>
       <span v-if="(time_left > 0) && (current_question_counts != question_counts)"> 残り{{ time_left }}秒</span>
       <transition>
-        <span v-show="show" class="flash"> +5秒！ </span>
+        <span v-if="show && (current_question_counts != question_counts)" class="flash"> +5秒！ </span>
       </transition>
       <div v-if="(time_left <= 0) && (current_question_counts != question_counts)" class="gameOver">Game Over</div>
       <div class="question mb-20">{{ current_question }}</div>
